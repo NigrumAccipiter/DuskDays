@@ -10,16 +10,16 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable {
 
     //configuración de pantalla
-    final int originalTileSize = 16; //16x16
-    final int scale = 3;
+    int originalTileSize = 16; //16x16
+    int scale = 3;
 
     public final int tileSize = originalTileSize * scale; //48x48
 
-    public int maxScreenCol = 16; //columnas
-    public int maxScreenRow  = 12; //filas
+    public final int maxScreenCol = 16; //columnas
+    public final int maxScreenRow = 12; //filas
 
-    public int screenWidth = tileSize * maxScreenCol; //768 pixels
-    public int screenHeight = tileSize * maxScreenRow; //576 pixels
+    public final int screenWidth = tileSize * maxScreenCol; //768 pixels
+    public final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
     //FPS
     int FPS = 60;
@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     TileManager TileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
-    Player player= new Player(this, keyH);
+    Player player = new Player(this, keyH);
 
     //definir posición default del jugador
 
@@ -86,17 +86,32 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if (this.getWidth() != screenWidth || this.getHeight() != screenHeight) {
-            screenWidth = this.getWidth();
-            screenHeight = this.getHeight();
-            maxScreenCol = screenWidth / tileSize;
-            maxScreenRow = screenHeight / tileSize;
-        }
 
         Graphics2D g2 = (Graphics2D) g;
 
+
+        int width = this.getWidth();
+        int height = this.getHeight();
+
+        double scaleX = (double) width / screenWidth;
+        double scaleY = (double) height / screenHeight;
+        double exactScale = Math.min(scaleX, scaleY);
+
+        int xOffset = (int) ((width - (screenWidth * exactScale)) / 2);
+        int yOffset = (int) ((height - (screenHeight * exactScale)) / 2);
+
+
+        g2.translate(xOffset, yOffset);
+        g2.scale(exactScale, exactScale);
+
+
         TileM.draw(g2);
         player.draw(g2);
+
+
+        g2.scale(1.0 / exactScale, 1.0 / exactScale);
+        g2.translate(-xOffset, -yOffset);
+
 
         g2.setColor(Color.green);
         g2.setFont(new Font("Arial", Font.BOLD, 20));
