@@ -17,7 +17,7 @@ public class TileManager {
     public TileManager(GamePanel gp) {
 
         this.gp = gp;
-        tile = new Tile[10];
+        tile = new Tile[100];
 
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
@@ -29,20 +29,46 @@ public class TileManager {
 
         try {
 
+            //Playa (Playa Ceniza)
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/ceniza.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/negro.png"));
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/agua.png"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/ceniza.png"));
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/CenizaHumeda1.png"));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/cenizaVar2.png"));
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/CenizaHumedaEsquina1.png"));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/cenizaHumeda1.png"));
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/CenizaHumedaEsquina2.png"));
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/cenizaHumedaEsquina1.png"));
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PisoCeniza.png"));
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/cenizaHumedaEsquina2.png"));
             tile[6] = new Tile();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/aguaCeniza.png"));
+
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/agua.png"));
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/aguaCeniza.png"));
+            tile[12] = new Tile();
+            tile[12].image = ImageIO.read(getClass().getResourceAsStream("/tiles/PC/cenizaVar1.png"));
+
+
+
+            //Bosque Ceniza
+
+            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/bosqueCeniza.png"));
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/bosqueCenizaVar3.png"));
+
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/bosqueCenizaVar4.png"));
+            tile[15] = new Tile();
+            tile[15].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/bosqueCenizaVar2.png"));
+            tile[14] = new Tile();
+            tile[14].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/bosqueCenizaVar2.1.png"));
+            tile[30] = new Tile();
+            tile[30].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BC/CenizaBosqueBordeSup.png"));
+
+
 
 
 
