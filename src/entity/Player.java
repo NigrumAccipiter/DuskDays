@@ -26,9 +26,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        this.worldX = gp.tileSize * 23 ;
-        this.worldY = gp.tileSize * 21;
-        speed = 6;
+        // Modifica los valores de inicio de tu jugador
+        worldX = gp.tileSize * 15; // Columna 15 (la mitad del mapa)
+        worldY = gp.tileSize * 15; // Fila 15 (hacia abajo, donde dibujaste la costa)
+        speed = 7;
         direction = "down";
     }
 
